@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary"
+        android:orientation="vertical"
+        android:fitsSystemWindows="true">
+
+    <androidx.cardview.widget.CardView
+            android:id="@+id/personal_head_card"
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:layout_margin="20dp"
+            android:foreground="?attr/selectableItemBackground"
+            app:cardElevation="20dp"
+            app:cardCornerRadius="16dp">
+
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            <com.socroty.zhifounews.MyRadiusImageView
+                    android:id="@+id/personal_head_card_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/head_default"
+                    android:layout_margin="10dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitXY"/>
+
+            <TextView
+                    android:id="@+id/personal_head_card_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@+id/personal_head_card_image"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:singleLine="true"
+                    android:ellipsize="end"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="32sp"/>
+
+            <View
+                    android:id="@+id/personal_head_card_line"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="70dp"
+                    android:layout_toEndOf="@+id/personal_head_card_image"
+                    android:layout_height="6dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="20dp"/>
+
+            <TextView
+                    android:id="@+id/personal_head_card_text_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@+id/personal_head_card_image"
+                    android:layout_below="@+id/personal_head_card_line"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="6dp"
+                    android:textColor="#ffcb3c"
+                    android:textSize="16sp"/>
+
+            <TextView
+                    android:id="@+id/personal_head_card_text_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@+id/personal_head_card_text_1"
+                    android:layout_below="@+id/personal_head_card_line"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="6dp"
+                    android:textColor="#ffcb3c"
+                    android:textSize="16sp"/>
+
+            <TextView
+                    android:id="@+id/personal_head_card_text_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@+id/personal_head_card_text_2"
+                    android:layout_below="@+id/personal_head_card_line"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="6dp"
+                    android:textColor="#ffcb3c"
+                    android:textSize="16sp"/>
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/personal_head_card">
+
+        <androidx.cardview.widget.CardView
+                android:id="@+id/personal_like_card"
+                android:layout_width="match_parent"
+                android:layout_height="86dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="10dp"
+                android:layout_weight="1"
+                android:foreground="?attr/selectableItemBackground"
+                app:cardElevation="0dp"
+                app:cardCornerRadius="16dp">
+
+            <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                <com.socroty.zhifounews.MyRadiusImageView
+                        android:id="@+id/personal_like_card_image"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:src="@drawable/personal_like"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitXY"/>
+
+
+                <TextView
+                        android:id="@+id/personal_like_card_text_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@+id/personal_like_card_image"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginTop="18dp"
+                        android:paddingStart="4dp"
+                        android:paddingEnd="4dp"
+                        android:textColor="#F5EBE0"
+                        android:textSize="16sp"
+                        android:text="@string/favorites"/>
+
+                <TextView
+                        android:id="@+id/personal_like_card_text_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@+id/personal_like_card_image"
+                        android:layout_below="@id/personal_like_card_text_1"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginTop="8dp"
+                        android:paddingStart="4dp"
+                        android:paddingEnd="4dp"
+                        android:textColor="#F5EBE0"
+                        android:textSize="16sp"/>
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+                android:id="@+id/personal_hate_card"
+                android:layout_width="match_parent"
+                android:layout_height="86dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginStart="10dp"
+                android:layout_weight="1"
+                android:foreground="?attr/selectableItemBackground"
+                app:cardElevation="0dp"
+                app:cardCornerRadius="16dp">
+
+            <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                <com.socroty.zhifounews.MyRadiusImageView
+                        android:id="@+id/personal_hate_card_image"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:src="@drawable/personal_hate"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitXY"/>
+
+                <TextView
+                        android:id="@+id/personal_hate_card_text_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@+id/personal_hate_card_image"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginTop="18dp"
+                        android:paddingStart="4dp"
+                        android:paddingEnd="4dp"
+                        android:textColor="#D8FFDF"
+                        android:textSize="16sp"
+                        android:text="@string/blacklist"/>
+
+                <TextView
+                        android:id="@+id/personal_hate_card_text_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@+id/personal_hate_card_image"
+                        android:layout_below="@id/personal_hate_card_text_1"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginTop="8dp"
+                        android:paddingStart="4dp"
+                        android:paddingEnd="4dp"
+                        android:textColor="#D8FFDF"
+                        android:textSize="16sp"/>
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+</RelativeLayout>

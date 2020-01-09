@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="UseCompoundDrawables"
+        android:background="#ffffff">
+
+    <androidx.cardview.widget.CardView
+            android:id="@+id/variety_list_card"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="10dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp">
+
+        <FrameLayout
+                android:layout_width="180dp"
+                android:layout_height="100dp"
+                android:layout_gravity="end">
+
+            <ImageView
+                    android:id="@+id/variety_list_card_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="end"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerCrop"
+                    tools:ignore="ContentDescription" />
+
+        </FrameLayout>
+
+        <TextView
+                android:id="@+id/variety_list_card_text_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                tools:ignore="RtlHardcoded"
+                android:textSize="30sp"
+                android:textColor="#ffffff"
+                android:layout_marginTop="10dp"/>
+
+        <TextView
+                android:id="@+id/variety_list_card_text_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                tools:ignore="RtlHardcoded"
+                android:textSize="20sp"
+                android:textColor="#ffffff"
+                android:layout_marginTop="55dp"/>
+
+        <View
+                android:id="@+id/variety_list_card_line"
+                android:layout_width="100dp"
+                android:layout_marginTop="51dp"
+                android:layout_height="6dp"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp" />
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             xmlns:app="http://schemas.android.com/apk/res-auto"
+             android:background="#FFC9CB"
+             android:layout_width="fill_parent"
+             android:layout_height="fill_parent">
+
+    <com.socroty.zhifounews.MyWareView
+            xmlns:ware="http://schemas.android.com/apk/res-auto"
+            android:background="#FFA1AA"
+            android:layout_width="match_parent"
+            android:layout_height="264dp"
+            ware:wareColor="#FFC9CB"/>
+
+    <TextView
+            android:id="@+id/sign_up_to_sign_in"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|start"
+            android:layout_marginBottom="20dp"
+            android:layout_marginStart="20dp"
+            android:text="@string/back_sign_in"
+            android:clickable="true"
+            android:focusable="true"
+            android:textColor="@color/colorAccent"
+            android:textSize="16sp"/>
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="80dp"
+            android:textSize="48sp"
+            android:textColor="@color/colorAccent"
+            android:text="@string/sign_up"/>
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="136dp"
+            android:textSize="24sp"
+            android:textColor="@color/colorAccent"
+            android:text="@string/welcom_sign_up"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/sign_up_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginBottom="344dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="260dp"
+                android:layout_height="48dp"
+                android:hint="@string/input_username"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/sign_up_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginBottom="272dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="260dp"
+                android:layout_height="48dp"
+                android:password="true"
+                android:hint="@string/input_password"
+                tools:ignore="Deprecated"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/sign_up_password_again"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginBottom="200dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="260dp"
+                android:layout_height="48dp"
+                android:password="true"
+                android:hint="@string/input_password_agin"
+                tools:ignore="Deprecated"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.cardview.widget.CardView
+            android:id="@+id/sign_up_ok"
+            android:layout_gravity="center_horizontal|bottom"
+            android:layout_marginBottom="100dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:foreground="?attr/selectableItemBackground"
+            app:cardCornerRadius="30dp"
+            app:cardElevation="0dp"
+            app:cardBackgroundColor="#FFA1AA">
+
+        <ImageView
+                android:src="@drawable/sign_pass"
+                android:layout_margin="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:ignore="ContentDescription"/>
+
+    </androidx.cardview.widget.CardView>
+
+</FrameLayout>

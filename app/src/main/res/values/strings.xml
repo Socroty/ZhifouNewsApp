@@ -1,3 +1,23 @@
 <resources>
-    <string name="app_name">ZhifouNewsApp</string>
+    <string name="app_name">ZhiFouNews</string>
+    <string name="info">Info</string>
+    <string name="info_text">Welcome to use ZhifouNews, this is a news reading software of my personal independent
+        development.\n It has the following characteristics:\n ① Simple interface design.\n ② Convenient operation
+        logic.\n ③ Beautiful visual effects.\n ④ Open source software.
+    </string>
+    <string name="back_sign_in">Back to sign in?</string>
+    <string name="sign_up">Sign up</string>
+    <string name="sign_in">Sign in</string>
+    <string name="welcom_sign_up">Welcome to join in ZhifouNews!</string>
+    <string name="input_username">Please input username:</string>
+    <string name="input_password">Please input password:</string>
+    <string name="input_password_agin">Please input password again:</string>
+    <string name="thanks_use">Thanks use ZhifouNews!</string>
+    <string name="no_account">No account?</string>
+    <string name="forget_password">Forget password!</string>
+    <string name="idataapi">News data from iDataAPI.</string>
+    <string name="favorites">Favorites</string>
+    <string name="blacklist">Blacklist</string>
+    <string name="like_news">Like</string>
+    <string name="read_news">Original</string>
 </resources>
