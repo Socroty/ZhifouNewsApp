@@ -1,7 +1,6 @@
 package com.socroty.zhifounews;
 
 import android.view.View;
-import android.view.ViewParent;
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.viewpager.widget.ViewPager;

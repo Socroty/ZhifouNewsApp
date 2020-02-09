@@ -35,6 +35,7 @@ public class NewsTitleListActivity extends AppCompatActivity {
         final String user_data;
         SharedPreferences pref = NewsTitleListActivity.this.getSharedPreferences("user_info", MODE_PRIVATE);
         String user_id = pref.getString("user_id", "");
+        assert intent_data != null;
         if (intent_data.equals("Favorite")) {
             user_data = "data_favorite_title" + "/#/" + user_id;
         } else if (intent_data.equals("Preference")){

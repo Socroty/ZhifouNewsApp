@@ -42,47 +42,28 @@ public class VarietyListAdapter extends RecyclerView.Adapter<VarietyListAdapter.
             textView_1.setText("   " + "Preference");
             imageView.setImageResource(R.drawable.variety_recommend);
             cardView.setCardBackgroundColor(Color.parseColor("#d5d5d5"));
-
             GradientDrawable drawable = new GradientDrawable();
             drawable.setCornerRadius(60);
             drawable.setColor(Color.parseColor("#3a3a3a"));
             line.setBackground(drawable);
-
             textView_0.setTextColor(Color.parseColor("#3a3a3a"));
             textView_1.setTextColor(Color.parseColor("#3a3a3a"));
             cardView.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View view) {
+                    MySnackbar.Custom(view,"推荐功能暂不可用",1000*3)
+                            .backgroundColor(0XFF333333)
+                            .radius(24)
+                            .margins(16,16,16,16)
+                            .show();
+                    /*
                     String data = "Preference";
                     Intent intent = new Intent(context, NewsTitleListActivity.class);
                     intent.putExtra("Genre", data);
                     context.startActivity(intent);
+                     */
                 }
             });
         }
-
-        /*
-        //头条
-        if (i == 1) {
-            textView_0.setText("  " + "头条");
-            textView_1.setText("   " + "Headline");
-            imageView.setImageResource(R.drawable.variety_headline);
-            cardView.setCardBackgroundColor(Color.parseColor("#1a1d22"));
-            GradientDrawable drawable = new GradientDrawable();
-            drawable.setCornerRadius(60);
-            drawable.setColor(Color.parseColor("#d6dee1"));
-            line.setBackground(drawable);
-            textView_0.setTextColor(Color.parseColor("#d6dee1"));
-            textView_1.setTextColor(Color.parseColor("#d6dee1"));
-            cardView.setOnClickListener(new View.OnClickListener() {
-                public void onClick(View view) {
-                    String data = "Headline";
-                    Intent intent = new Intent(context, NewsTitleListActivity.class);
-                    intent.putExtra("Genre", data);
-                    context.startActivity(intent);
-                }
-            });
-        }
-        */
 
         //国内
         if (i == 1) {
@@ -233,7 +214,6 @@ public class VarietyListAdapter extends RecyclerView.Adapter<VarietyListAdapter.
                     String data = "Economics";
                     Intent intent = new Intent(context, NewsTitleListActivity.class);
                     intent.putExtra("Genre", data);
-
                     context.startActivity(intent);
                 }
             });
@@ -282,17 +262,15 @@ public class VarietyListAdapter extends RecyclerView.Adapter<VarietyListAdapter.
                 }
             });
         }
-
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return 10;
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
         View view;
-
         ViewHolder(@NonNull View itemView) {
             super(itemView);
             this.view = itemView;

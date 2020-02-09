@@ -1,8 +1,10 @@
 package com.socroty.zhifounews;
 
+import android.content.Intent;
 import android.os.StrictMode;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
@@ -41,6 +43,7 @@ public class SignUpActivity extends AppCompatActivity {
         textInputLayout_password_again.setErrorEnabled(false);
         CardView sign_up_ok = findViewById(R.id.sign_up_ok);
         TextView textView_to_sign = findViewById(R.id.sign_up_to_sign_in);
+        final FrameLayout frameLayout = findViewById(R.id.sign_up_framelayout);
 
         sign_up_ok.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,14 +53,34 @@ public class SignUpActivity extends AppCompatActivity {
                 final String user_password = Objects.requireNonNull(editText_password).getText().toString();
                 final String user_password_again = Objects.requireNonNull(editText_password_again).getText().toString();
 
-                if (user_name.length() < 4 || user_name.length() > 8 ) {
-                    editText_name.setError("长度必须为4-8位");
+                if (user_name.length() < 3 || user_name.length() > 10 ) {
+                    MySnackbar.Custom(frameLayout,"用户名长度必须为3-10位!！",1000*3)
+                            .backgroundColor(0XFF333333)
+                            .radius(24)
+                            .margins(16,16,16,16)
+                            .show();
+                    //editText_name.setError("长度必须为4-8位");
                 } else if (user_password.length() < 8 || user_password.length() > 16) {
-                    editText_password.setError("长度必须为8-16位");
+                    MySnackbar.Custom(frameLayout,"密码长度必须为8-16位！",1000*3)
+                            .backgroundColor(0XFF333333)
+                            .radius(24)
+                            .margins(16,16,16,16)
+                            .show();
+                    //editText_password.setError("长度必须为8-16位");
                 } else if (inputSpecialChar(user_name)) {
-                    editText_name.setError("禁止包含特殊字符！");
+                    MySnackbar.Custom(frameLayout,"用户名内禁止包含特殊字符！",1000*3)
+                            .backgroundColor(0XFF333333)
+                            .radius(24)
+                            .margins(16,16,16,16)
+                            .show();
+                    //editText_name.setError("禁止包含特殊字符！");
                 } else if (inputSpecialChar(user_password)) {
-                    editText_password.setError("禁止包含特殊字符！");
+                    MySnackbar.Custom(frameLayout,"密码内禁止包含特殊字符！",1000*3)
+                            .backgroundColor(0XFF333333)
+                            .radius(24)
+                            .margins(16,16,16,16)
+                            .show();
+                    //editText_password.setError("禁止包含特殊字符！");
                 } else {
                     if (user_password.equals(user_password_again)) {
                         final String user_data = "user_sign_up" + "/#/" + user_name + "/&/" + user_password;
@@ -70,27 +93,53 @@ public class SignUpActivity extends AppCompatActivity {
 
                         switch (sign_up_result) {
                             case "sign.up.exist":
-                                Toast.makeText(SignUpActivity.this, "此用户名已被注册！", Toast.LENGTH_SHORT).show();
+                                MySnackbar.Custom(frameLayout,"此用户名已被注册！",1000*3)
+                                        .backgroundColor(0XFF333333)
+                                        .radius(24)
+                                        .margins(16,16,16,16)
+                                        .show();
                                 break;
                             case "sign.up.false":
-                                Toast.makeText(SignUpActivity.this, "写入用户信息失败，请稍后重试！", Toast.LENGTH_SHORT).show();
+                                MySnackbar.Custom(frameLayout,"写入用户信息失败，请稍后重试！",1000*3)
+                                        .backgroundColor(0XFF333333)
+                                        .radius(24)
+                                        .margins(16,16,16,16)
+                                        .show();
                                 break;
                             case "sign.up.true":
-                                Toast.makeText(SignUpActivity.this, "注册完成，请登录！", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent();
+                                intent.putExtra("backData", "注册完成请登录！");
+                                setResult(RESULT_OK, intent);
                                 finish();
                                 break;
                             case "server.error":
-                                Toast.makeText(SignUpActivity.this, "服务端发生错误，请稍后重试！", Toast.LENGTH_SHORT).show();
+                                MySnackbar.Custom(frameLayout,"服务端发生错误，请稍后重试！",1000*3)
+                                        .backgroundColor(0XFF333333)
+                                        .radius(24)
+                                        .margins(16,16,16,16)
+                                        .show();
                                 break;
                             case "no.return":
-                                Toast.makeText(SignUpActivity.this, "未接受到服务器返回数据！", Toast.LENGTH_SHORT).show();
+                                MySnackbar.Custom(frameLayout,"未接收到服务器返回数据！",1000*3)
+                                        .backgroundColor(0XFF333333)
+                                        .radius(24)
+                                        .margins(16,16,16,16)
+                                        .show();
                                 break;
                             default:
-                                Toast.makeText(SignUpActivity.this, "发生未知错误！", Toast.LENGTH_SHORT).show();
+                                MySnackbar.Custom(frameLayout,"发生未知错误！",1000*3)
+                                        .backgroundColor(0XFF333333)
+                                        .radius(24)
+                                        .margins(16,16,16,16)
+                                        .show();
                                 break;
                         }
                     } else {
-                        Toast.makeText(SignUpActivity.this, "请核对两次输入密码！", Toast.LENGTH_SHORT).show();
+                        MySnackbar.Custom(frameLayout,"请核对两次密码是否相同！",1000*3)
+                                .backgroundColor(0XFF333333)
+                                .radius(24)
+                                .margins(16,16,16,16)
+                                .show();
                     }
                 }
             }

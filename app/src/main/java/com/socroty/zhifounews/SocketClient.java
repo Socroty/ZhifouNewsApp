@@ -1,7 +1,6 @@
 package com.socroty.zhifounews;
 
 import android.content.Context;
-
 import java.io.*;
 import java.net.InetSocketAddress;
 import java.net.Socket;
@@ -13,7 +12,7 @@ public class SocketClient {
         String result;
         //Socket连接服务端
         Socket socket = new Socket();
-        socket.connect(new InetSocketAddress("00.00.00.00",0000), 600);
+        socket.connect(new InetSocketAddress("192.168.1.20",5232), 600);
 
         //发送传入数据
         PrintWriter pw = new PrintWriter(socket.getOutputStream(), true);
@@ -29,7 +28,7 @@ public class SocketClient {
 
     void getHeadlineImage(String id, Context context) throws IOException {
 
-        Socket s = new Socket("00.00.00.00", 0000);
+        Socket s = new Socket("192.168.1.20", 5233);
         String data = "get_headline_image" + "/&/" + id;
         OutputStream outs = s.getOutputStream();
         outs.write(data.getBytes());

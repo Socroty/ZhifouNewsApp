@@ -32,7 +32,7 @@ public class MyAlignTextView extends TextView{
     }
 
     private void setCustomFont(Context context) {
-        Typeface customFont = Typeface.createFromAsset(context.getAssets(), "fonts/MyChineseFont.TTF");
+        Typeface customFont = Typeface.createFromAsset(context.getAssets(), "fonts/SourceHanSerifSC-Medium.otf");
         super.setTypeface(customFont);
     }
 
@@ -47,10 +47,8 @@ public class MyAlignTextView extends TextView{
             setMeasuredDimension(getMeasuredWidth(), heightSize);
         } else {
             reCalculate();
-
             int height = lines.size() * getLineHeight();
-
-            if (heightMode ==  MeasureSpec.AT_MOST) {
+            if (heightMode == MeasureSpec.AT_MOST) {
                 // 最小高度
                 setMeasuredDimension(getMeasuredWidth(), Math.min(heightSize, height));
             } else {
@@ -70,7 +68,7 @@ public class MyAlignTextView extends TextView{
 
         int gravity = getGravity();
         if ((gravity & 0x1000) == 0) { // 是否垂直居中
-            firstHeight = firstHeight + (getTextSize() - firstHeight) / 2;
+            firstHeight = firstHeight + (getTextSize() - firstHeight);
         }
 
         int paddingTop = getPaddingTop();
@@ -137,7 +135,6 @@ public class MyAlignTextView extends TextView{
                 sb.append(text.charAt(i));
             }
         }
-
         if(sb.length() > 0) {
             lines.add(sb.toString());
         }

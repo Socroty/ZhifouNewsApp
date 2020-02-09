@@ -13,10 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.*;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
@@ -39,7 +36,6 @@ public class NewsParticularActivity extends AppCompatActivity {
     private String data_follow;
     private String data_favorite;
     private String data_author;
-    private String user_name;
     private String user_id;
     private boolean user_permit;
     private String data_category;
@@ -50,6 +46,7 @@ public class NewsParticularActivity extends AppCompatActivity {
     private String data_title;
     private String data_image_url;
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,12 +73,14 @@ public class NewsParticularActivity extends AppCompatActivity {
 
         String[] news_data;
 
+        final FrameLayout frameLayout = findViewById(R.id.news_particular_framelayout);
+
         final Intent intent = getIntent();
         String data = intent.getStringExtra("extra_id");
 
         SharedPreferences pref = getSharedPreferences("user_info", MODE_PRIVATE);
         user_permit = pref.getBoolean("user_permit", false);
-        user_name = pref.getString("user_name", "null");
+        //user_name = pref.getString("user_name", "null");
         user_id = pref.getString("user_id", "null");
 
 
@@ -90,6 +89,7 @@ public class NewsParticularActivity extends AppCompatActivity {
         final ImageView news_particular_author_star_image = findViewById(R.id.news_particular_author_star_image);
         final TextView particular_like_text = findViewById(R.id.particular_like_text);
 
+        assert data != null;
         news_data = data.split("/%/");
         data_id = news_data[0];
         data_title = news_data[1];
@@ -118,6 +118,7 @@ public class NewsParticularActivity extends AppCompatActivity {
         }
 
         Calendar cal = Calendar.getInstance();
+        assert dateTime != null;
         cal.setTime(dateTime);
         int year = cal.get(Calendar.YEAR);
         int month = cal.get(Calendar.MONTH) + 1;
@@ -181,7 +182,6 @@ public class NewsParticularActivity extends AppCompatActivity {
         CardView cardView_news_particular_content_read_card = findViewById(R.id.news_particular_content_read_card);
 
         cardView_news_particular_content_like_card.setOnClickListener(new View.OnClickListener() {
-            @SuppressLint("ShowToast")
             @Override
             public void onClick(View v) {
                 if (user_permit) {
@@ -193,7 +193,11 @@ public class NewsParticularActivity extends AppCompatActivity {
                         favoriteControl = 1;
                     }
                 } else {
-                    Toast.makeText(NewsParticularActivity.this, "请登录后进行此操作！", Toast.LENGTH_SHORT).show();
+                    MySnackbar.Custom(frameLayout,"请登录后进行此操作!",1000*3)
+                            .backgroundColor(0XFF333333)
+                            .radius(24)
+                            .margins(16,16,16,16)
+                            .show();
                 }
             }
         });
@@ -254,6 +258,9 @@ public class NewsParticularActivity extends AppCompatActivity {
                 break;
             case "天天快报":
                 news_particular_author_image.setImageResource(R.drawable.tiantiankuaibao);
+                break;
+            case "极客公园":
+                news_particular_author_image.setImageResource(R.drawable.jikegongyuan);
                 break;
             default:
                 news_particular_author_image.setImageResource(R.drawable.head_default);
@@ -317,7 +324,11 @@ public class NewsParticularActivity extends AppCompatActivity {
                         followControl = 1;
                     }
                 } else {
-                    Toast.makeText(NewsParticularActivity.this, "请登录后进行此操作！", Toast.LENGTH_SHORT).show();
+                    MySnackbar.Custom(frameLayout,"请登录后进行此操作!",1000*3)
+                            .backgroundColor(0XFF333333)
+                            .radius(24)
+                            .margins(16,16,16,16)
+                            .show();
                 }
             }
         });
@@ -326,12 +337,22 @@ public class NewsParticularActivity extends AppCompatActivity {
         particular_comment_ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                MySnackbar.Custom(frameLayout,"评论功能暂不可用！",1000*3)
+                        .backgroundColor(0XFF333333)
+                        .radius(24)
+                        .margins(16,16,16,16)
+                        .show();
+                /*
                 if (user_permit) {
                     final EditText particular_comment_edit = findViewById(R.id.particular_comment_edit);
                     final String comment_text = particular_comment_edit.getText().toString().replace("\n", "/NN/");
                     String result_input_comment = null;
                     if (comment_text.equals("")) {
-                        Toast.makeText(NewsParticularActivity.this, "评论内容不可为空！", Toast.LENGTH_SHORT).show();
+                        MySnackbar.Custom(frameLayout,"评论内容不可为空!",1000*3)
+                                .backgroundColor(0XFF333333)
+                                .radius(24)
+                                .margins(16,16,16,16)
+                                .show();
                     } else {
                         try {
                             result_input_comment = socketClient.getDataInfo("data_comment_insert/#/" + user_id + "/&/" + data_id + "/&/" + comment_text);
@@ -340,7 +361,11 @@ public class NewsParticularActivity extends AppCompatActivity {
                         }
                         String[] result_insert = Objects.requireNonNull(result_input_comment).split("/@/");
                         if (result_insert[0].equals("insert.true")) {
-                            Toast.makeText(NewsParticularActivity.this, "评论成功！", Toast.LENGTH_SHORT).show();
+                            MySnackbar.Custom(frameLayout,"评论添加成功!",1000*3)
+                                    .backgroundColor(0XFF333333)
+                                    .radius(24)
+                                    .margins(16,16,16,16)
+                                    .show();
                             particular_comment_edit.setText("");
                             try {
                                 data_comment = socketClient.getDataInfo("data_comment_get/#/" + data_id);
@@ -371,10 +396,18 @@ public class NewsParticularActivity extends AppCompatActivity {
                                     }
                                     assert result_delete != null;
                                     if (result_delete.equals("delete.true")) {
-                                        Toast.makeText(NewsParticularActivity.this, "替换评论成功！", Toast.LENGTH_SHORT).show();
+                                        MySnackbar.Custom(frameLayout,"评论修改成功!",1000*3)
+                                                .backgroundColor(0XFF333333)
+                                                .radius(24)
+                                                .margins(16,16,16,16)
+                                                .show();
                                         particular_comment_edit.setText("");
                                     } else {
-                                        Toast.makeText(NewsParticularActivity.this, "出现未知错误！", Toast.LENGTH_SHORT).show();
+                                        MySnackbar.Custom(frameLayout,"发生未知错误!",1000*3)
+                                                .backgroundColor(0XFF333333)
+                                                .radius(24)
+                                                .margins(16,16,16,16)
+                                                .show();
                                     }
                                     try {
                                         data_comment = socketClient.getDataInfo("data_comment_get/#/" + data_id);
@@ -386,12 +419,22 @@ public class NewsParticularActivity extends AppCompatActivity {
                             });
                             dialog.show();
                         } else {
-                            Toast.makeText(NewsParticularActivity.this, "发生未知错误：" + result_input_comment, Toast.LENGTH_SHORT).show();
+                            MySnackbar.Custom(frameLayout,"发生未知错误!",1000*3)
+                                    .backgroundColor(0XFF333333)
+                                    .radius(24)
+                                    .margins(16,16,16,16)
+                                    .show();
                         }
                     }
                 } else {
-                    Toast.makeText(NewsParticularActivity.this, "请登陆后参与评论！", Toast.LENGTH_SHORT).show();
+                    MySnackbar.Custom(frameLayout,"请登录后参与评论!",1000*3)
+                            .backgroundColor(0XFF333333)
+                            .radius(24)
+                            .margins(16,16,16,16)
+                            .show();
                 }
+
+                 */
             }
         });
     }

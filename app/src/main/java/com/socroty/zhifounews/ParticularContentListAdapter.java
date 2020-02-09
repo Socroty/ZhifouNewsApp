@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -59,7 +58,11 @@ public class ParticularContentListAdapter extends RecyclerView.Adapter<Particula
                         test_list_mark.setText("▲ "+info[1]);
                         break;
                     default:
-                        Toast.makeText(listViewHolder.view.getContext(), "程序错误！", Toast.LENGTH_SHORT).show();
+                        MySnackbar.Custom(listViewHolder.view,"发生未知错误！",1000*3)
+                                .backgroundColor(0XFF333333)
+                                .radius(24)
+                                .margins(16,16,16,16)
+                                .show();
                         break;
                 }
             }
@@ -71,7 +74,7 @@ public class ParticularContentListAdapter extends RecyclerView.Adapter<Particula
         return number -1;
     }
 
-    class ListViewHolder extends RecyclerView.ViewHolder {
+    static class ListViewHolder extends RecyclerView.ViewHolder {
         View view;
 
         ListViewHolder(@NonNull View itemView) {

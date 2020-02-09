@@ -1,12 +1,7 @@
 package com.socroty.zhifounews;
 
-import android.app.Notification;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.view.Menu;
@@ -54,8 +49,8 @@ public class HomeActivity extends AppCompatActivity {
         TabLayout.Tab personal = mTabLayout.getTabAt(2);
 
         //设置Tab标题
-        Objects.requireNonNull(headline).setText("头条精选");
-        Objects.requireNonNull(variety).setText("分类推荐");
+        Objects.requireNonNull(headline).setText("头条推荐");
+        Objects.requireNonNull(variety).setText("主题分类");
         Objects.requireNonNull(personal).setText("个人中心");
 
     }
@@ -78,21 +73,7 @@ public class HomeActivity extends AppCompatActivity {
             dialog.setPositiveButton("关闭", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                        NotificationChannel mChannel = new NotificationChannel("my_notification", "推送通知", NotificationManager.IMPORTANCE_LOW);
-                        notificationManager.createNotificationChannel(mChannel);
-                        Notification notification = new Notification.Builder(HomeActivity.this)
-                                .setChannelId("my_notification")
-                                .setContentTitle("知否新闻的通知")
-                                .setContentText("通知文本通知文本通知文本")
-                                .setColor(Color.parseColor("#FFBA00"))
-                                .setColorized(true)
-                                //.setLargeIcon(BitmapFactory.decodeResource(getResources(),R.drawable.ic_notification_large))
-                                .setSmallIcon(R.drawable.ic_notification).build();
-                        notificationManager.notify(1,notification);
-                    }
                 }
             });
             dialog.setNegativeButton("反馈", new DialogInterface.OnClickListener() {

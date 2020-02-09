@@ -48,7 +48,7 @@ public class NewsTitleListAdapter extends RecyclerView.Adapter<NewsTitleListAdap
         tp.setFakeBoldText(true);
 
         SharedPreferences pref = context.getSharedPreferences("user_info", MODE_PRIVATE);
-        boolean user_permit = pref.getBoolean("user_permit", false);
+        //boolean user_permit = pref.getBoolean("user_permit", false);
         final String user_id = pref.getString("user_id", "null");
 
         NewsTitleListActivity newsTitleListActivity = new NewsTitleListActivity();
@@ -105,7 +105,7 @@ public class NewsTitleListAdapter extends RecyclerView.Adapter<NewsTitleListAdap
         return title_length - 1;
     }
 
-    class ListViewHolder extends RecyclerView.ViewHolder {
+    static class ListViewHolder extends RecyclerView.ViewHolder {
         View view;
 
         ListViewHolder(@NonNull View itemView) {

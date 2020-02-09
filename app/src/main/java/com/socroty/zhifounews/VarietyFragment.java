@@ -22,7 +22,6 @@ public class VarietyFragment extends Fragment {
         return view;
     }
 
-
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 

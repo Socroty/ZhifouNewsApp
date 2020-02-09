@@ -19,5 +19,4 @@ public class MyPassLinearLayoutManager extends LinearLayoutManager {
             e.printStackTrace();
         }
     }
-
 }

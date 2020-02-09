@@ -56,7 +56,7 @@ public class ParticularCommentListAdapter extends RecyclerView.Adapter<Particula
         return 10;
     }
 
-    class ListViewHolder extends RecyclerView.ViewHolder {
+    static class ListViewHolder extends RecyclerView.ViewHolder {
         View view;
 
         ListViewHolder(@NonNull View itemView) {

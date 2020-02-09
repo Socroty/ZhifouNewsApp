@@ -1,12 +1,9 @@
 package com.socroty.zhifounews;
 
-import android.graphics.Color;
-import android.graphics.drawable.GradientDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.viewpager.widget.PagerAdapter;
@@ -52,7 +49,7 @@ public class QualityHeadViewAdapter extends PagerAdapter {
     @NonNull
     @Override
     //预加载视图内容
-    public Object instantiateItem(@NonNull ViewGroup container, int position) {
+    public Object instantiateItem(@NonNull ViewGroup container, final int position) {
         View view = LayoutInflater.from(container.getContext()).inflate(R.layout.quality_head_view_card, container, false);
         container.addView(view);
         bind(mItems.get(position), view);
@@ -74,17 +71,6 @@ public class QualityHeadViewAdapter extends PagerAdapter {
     private void bind(QualityHeadViewItem item, View view) {
         ImageView imageView = view.findViewById(R.id.quality_head_view_card_image);
         imageView.setImageDrawable(item.getItemImage());
-
-        TextView textView = view.findViewById(R.id.quality_head_view_card_text);
-        textView.setText(item.getItemText());
-
-        GradientDrawable drawable = new GradientDrawable();
-        drawable.setCornerRadius(40);
-        drawable.setColor(Color.parseColor(item.getItemBackgroundColor()));
-
-        textView.setBackground(drawable);
-        textView.setTextColor(Color.parseColor(item.getItemTextColor()));
-
     }
 
     @Override

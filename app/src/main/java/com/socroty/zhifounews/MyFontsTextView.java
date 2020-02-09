@@ -19,7 +19,7 @@ public class MyFontsTextView extends TextView {
     }
 
     private void applyCustomFont(Context context) {
-        Typeface customFont = Typeface.createFromAsset(context.getAssets(), "fonts/MyChineseFont.TTF");
+        Typeface customFont = Typeface.createFromAsset(context.getAssets(), "fonts/SourceHanSerifSC-Medium.otf");
         super.setTypeface(customFont);
     }
 }

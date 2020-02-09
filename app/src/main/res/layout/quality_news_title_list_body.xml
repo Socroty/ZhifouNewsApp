@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="UseCompoundDrawables"
+        android:background="#ffffff">
+
+    <androidx.cardview.widget.CardView
+            android:id="@+id/quality_news_list_card"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="0dp"
+            app:cardBackgroundColor="#11333333"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp">
+
+        <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+            <com.socroty.zhifounews.MyFontsTextView
+                    android:id="@+id/quality_news_list_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingEnd="160dp"
+                    android:paddingStart="12dp"
+                    android:gravity="center_vertical"
+                    tools:ignore="RtlHardcoded"
+                    android:textSize="17sp"
+                    android:textColor="#333333"/>
+
+            <FrameLayout
+                    android:id="@+id/quality_news_list_image"
+                    android:layout_width="144dp"
+                    android:layout_height="84dp"
+                    android:layout_gravity="end"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp">
+
+                <com.socroty.zhifounews.MyRadiusImageView
+                        android:id="@+id/quality_news_list_card_image"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="end"
+                        android:adjustViewBounds="true"
+                        android:scaleType="centerCrop"
+                        tools:ignore="ContentDescription"/>
+
+            </FrameLayout>
+
+        </FrameLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</FrameLayout>

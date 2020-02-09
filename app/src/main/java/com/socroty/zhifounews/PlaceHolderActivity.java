@@ -24,22 +24,29 @@ public class PlaceHolderActivity extends AppCompatActivity {
         ImageView imageView = findViewById(R.id.place_holder_image);
         TextView textView = findViewById(R.id.place_holder_text);
 
-        if (type.equals("blank")){
-            imageView.setImageResource(R.drawable.activity_blank);
-            textView.setText(data);
-            final CustomPaintDrawable customPaintDrawable = new CustomPaintDrawable();
-            textView.setBackground(customPaintDrawable.paintDrawable(80, "#FFBA00"));
-        }else if (type.equals("warning")){
-            imageView.setImageResource(R.drawable.activity_warning);
-            textView.setText(data);
-            final CustomPaintDrawable customPaintDrawable = new CustomPaintDrawable();
-            textView.setBackground(customPaintDrawable.paintDrawable(80, "#333333"));
-        }
-        else if (type.equals("wechat")){
-            imageView.setImageResource(R.drawable.wechat);
-            textView.setText(data);
-            final CustomPaintDrawable customPaintDrawable = new CustomPaintDrawable();
-            textView.setBackground(customPaintDrawable.paintDrawable(80, "#333333"));
+        assert type != null;
+        switch (type) {
+            case "blank": {
+                imageView.setImageResource(R.drawable.activity_blank);
+                textView.setText(data);
+                final CustomPaintDrawable customPaintDrawable = new CustomPaintDrawable();
+                textView.setBackground(customPaintDrawable.paintDrawable(80, "#333333"));
+                break;
+            }
+            case "warning": {
+                imageView.setImageResource(R.drawable.activity_warning);
+                textView.setText(data);
+                final CustomPaintDrawable customPaintDrawable = new CustomPaintDrawable();
+                textView.setBackground(customPaintDrawable.paintDrawable(80, "#333333"));
+                break;
+            }
+            case "wechat": {
+                imageView.setImageResource(R.drawable.wechat);
+                textView.setText(data);
+                final CustomPaintDrawable customPaintDrawable = new CustomPaintDrawable();
+                textView.setBackground(customPaintDrawable.paintDrawable(80, "#333333"));
+                break;
+            }
         }
     }
 }

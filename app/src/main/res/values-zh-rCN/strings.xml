@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">知否新闻</string>
     <string name="info">关于</string>
-    <string name="info_text">欢迎大家使用“知否新闻”，希望这是一个符合您心意的新闻阅读软件。\n① 简洁：纯粹的新闻阅读体验。\n② 高效：简单方便的操作逻辑。\n③ 美观：柔和舒适的视觉效果。\n④ 开源：拒绝盈利的开源软件。</string>
+    <string name="info_text">欢迎大家使用“知否新闻”，希望这是一个符合您心意的新闻阅读软件。\n① 简洁：纯粹舒适的阅读体验。\n② 高效：简单方便的操作逻辑。\n③ 美观：柔和舒适的视觉效果。\n④ 开源：没有盈利的开源软件。</string>
     <string name="back_sign_in">返回登录？</string>
     <string name="sign_up">注册</string>
     <string name="sign_in">登录</string>
@@ -15,7 +15,7 @@
     <string name="forget_password">忘记密码！</string>
     <string name="idataapi">内容数据由iDataAPI提供</string>
     <string name="favorites">收藏夹</string>
-    <string name="blacklist">公众号</string>
+    <string name="blacklist">黑名单</string>
     <string name="like_news">收藏</string>
     <string name="read_news">原文</string>
 </resources>

@@ -67,10 +67,10 @@ public class MyNetImageView extends ImageView {
                         CustomBlurBitmap customBlurBitmap = new CustomBlurBitmap();
                         //使用工厂把网络的输入流生产Bitmap
                         Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
-                        Bitmap bitmap_bg = customBlurBitmap.blurBitmap(bitmap,getContext());
+                        //Bitmap bitmap_bg = customBlurBitmap.blurBitmap(bitmap,getContext());
                         //利用Message把图片发给Handler
                         Message msg = Message.obtain();
-                        msg.obj = bitmap_bg;
+                        msg.obj = bitmap;
                         msg.what = GET_DATA_SUCCESS;
                         handler.sendMessage(msg);
                         inputStream.close();

@@ -9,7 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
@@ -19,6 +18,7 @@ import androidx.fragment.app.Fragment;
 import java.io.IOException;
 import java.util.Objects;
 
+import static android.app.Activity.RESULT_OK;
 import static android.content.Context.MODE_PRIVATE;
 
 public class PersonalFragment extends Fragment {
@@ -60,13 +60,25 @@ public class PersonalFragment extends Fragment {
 
             switch (user_random_verify_result) {
                 case "no.return":
-                    Toast.makeText(getContext(), "无法连接到服务器！", Toast.LENGTH_SHORT).show();
+                    MySnackbar.Custom(getView(),"无法连接到服务器！",1000*3)
+                            .backgroundColor(0XFF333333)
+                            .radius(24)
+                            .margins(16,16,16,16)
+                            .show();
                     break;
                 case "verify.true":
-                    Toast.makeText(getContext(), "欢迎回来：" + user_name, Toast.LENGTH_SHORT).show();
+                    MySnackbar.Custom(getView(),"欢迎回来！"+user_name,1000*3)
+                            .backgroundColor(0XFF333333)
+                            .radius(24)
+                            .margins(16,16,16,16)
+                            .show();
                     break;
                 case "verify.false":
-                    Toast.makeText(getContext(), "账号离线，请重新登录！", Toast.LENGTH_SHORT).show();
+                    MySnackbar.Custom(getView(),"账号离线，请重新登录！",1000*3)
+                            .backgroundColor(0XFF333333)
+                            .radius(24)
+                            .margins(16,16,16,16)
+                            .show();
                     SharedPreferences.Editor editor = getContext().getSharedPreferences("user_info", MODE_PRIVATE).edit();
                     editor.putBoolean("user_permit", false);
                     editor.putString("user_name", "null");
@@ -75,14 +87,21 @@ public class PersonalFragment extends Fragment {
                     editor.apply();
                     break;
                 case "server.error":
-                    Toast.makeText(getContext(), "服务端发生错误，请稍后重试！", Toast.LENGTH_SHORT).show();
+                    MySnackbar.Custom(getView(),"服务端发生错误，请稍后重试！",1000*3)
+                            .backgroundColor(0XFF333333)
+                            .radius(24)
+                            .margins(16,16,16,16)
+                            .show();
                     break;
                 default:
-                    Toast.makeText(getContext(), "发生未知错误！", Toast.LENGTH_SHORT).show();
+                    MySnackbar.Custom(getView(),"发生未知错误！",1000*3)
+                            .backgroundColor(0XFF333333)
+                            .radius(24)
+                            .margins(16,16,16,16)
+                            .show();
                     break;
             }
         } else {
-            //Toast.makeText(getContext(), "无账号在线，请登录！", Toast.LENGTH_SHORT).show();
             SharedPreferences.Editor editor = getContext().getSharedPreferences("user_info", MODE_PRIVATE).edit();
             editor.putBoolean("user_permit", false);
             editor.putString("user_name", "null");
@@ -98,11 +117,16 @@ public class PersonalFragment extends Fragment {
                 SharedPreferences pref = Objects.requireNonNull(getContext()).getSharedPreferences("user_info", MODE_PRIVATE);
                 boolean user_data = pref.getBoolean("user_permit", false);
                 if (user_data) {
-                    Intent intent = new Intent(getContext(), PersonalInfoActivity.class);
-                    startActivity(intent);
+                    MySnackbar.Custom(getView(),"个人信息界面暂未开放",1000*3)
+                            .backgroundColor(0XFF333333)
+                            .radius(24)
+                            .margins(16,16,16,16)
+                            .show();
+                    //Intent intent = new Intent(getContext(), PersonalInfoActivity.class);
+                    //startActivity(intent);
                 } else {
                     Intent intent = new Intent(getContext(), SignInActivity.class);
-                    startActivity(intent);
+                    startActivityForResult(intent,1122);
                 }
             }
         });
@@ -120,7 +144,11 @@ public class PersonalFragment extends Fragment {
                     intent.putExtra("Genre", "Favorite");
                     Objects.requireNonNull(getContext()).startActivity(intent);
                 } else {
-                    Toast.makeText(getContext(), "请登陆后使用收藏夹！", Toast.LENGTH_SHORT).show();
+                    MySnackbar.Custom(getView(),"请登陆后使用收藏夹！",1000*3)
+                            .backgroundColor(0XFF333333)
+                            .radius(24)
+                            .margins(16,16,16,16)
+                            .show();
                 }
             }
         });
@@ -173,11 +201,11 @@ public class PersonalFragment extends Fragment {
         personal_head_card.setBackground(ContextCompat.getDrawable(Objects.requireNonNull(getContext()), R.drawable.shape_personal_head));
         //personal_cardView_last.setBackground(getResources().getDrawable(R.drawable.shape_last));
         personal_cardView_like.setBackground(customPaintDrawable.paintDrawable(48, "#40C2AA87"));
-        personal_cardView_hate.setBackground(customPaintDrawable.paintDrawable(48, "#200ed145"));
+        personal_cardView_hate.setBackground(customPaintDrawable.paintDrawable(48, "#203f454e"));
         personal_textView_like_1.setBackground(customPaintDrawable.paintDrawable(12, "#A76914"));
         personal_textView_like_2.setBackground(customPaintDrawable.paintDrawable(12, "#A76914"));
-        personal_textView_hate_1.setBackground(customPaintDrawable.paintDrawable(12, "#00c437"));
-        personal_textView_hate_2.setBackground(customPaintDrawable.paintDrawable(12, "#00c437"));
+        personal_textView_hate_1.setBackground(customPaintDrawable.paintDrawable(12, "#3f454e"));
+        personal_textView_hate_2.setBackground(customPaintDrawable.paintDrawable(12, "#3f454e"));
         personal_head_card_text_1.setBackground(customPaintDrawable.paintDrawable(12, "#333333"));
         personal_head_card_text_2.setBackground(customPaintDrawable.paintDrawable(12, "#333333"));
         personal_head_card_text_3.setBackground(customPaintDrawable.paintDrawable(12, "#333333"));
@@ -198,22 +226,46 @@ public class PersonalFragment extends Fragment {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            assert profile_data != null;
-            String[] user_profile_info = profile_data.split("/%/");
-            personal_head_card_text_1.setText(user_profile_info[0]);
-            personal_head_card_text_1.setPadding(12, 0, 12, 0);
-            personal_head_card_text_2.setText(user_profile_info[1]);
-            personal_head_card_text_2.setPadding(12, 0, 12, 0);
-            personal_head_card_text_3.setText(user_profile_info[2]);
-            personal_head_card_text_3.setPadding(12, 0, 12, 0);
-            personal_like_card_text_2.setText("已同步");
-            personal_hate_card_text_2.setText("小程序");
+            if (profile_data != null){
+                String[] user_profile_info = profile_data.split("/%/");
+                personal_head_card_text_1.setText(user_profile_info[0]);
+                personal_head_card_text_1.setPadding(12, 0, 12, 0);
+                personal_head_card_text_2.setText(user_profile_info[1]);
+                personal_head_card_text_2.setPadding(12, 0, 12, 0);
+                personal_head_card_text_3.setText(user_profile_info[2]);
+                personal_head_card_text_3.setPadding(12, 0, 12, 0);
+                personal_like_card_text_2.setText("已同步");
+                personal_hate_card_text_2.setText("已同步");
+            }else {
+                Intent intent = new Intent();
+                intent.setClass(Objects.requireNonNull(getContext()), ErrorActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);  //注意本行的FLAG设置
+                intent.putExtra("extra_data", "服务离线！请点此关闭程序！");
+                startActivity(intent);
+                Objects.requireNonNull(getActivity()).finish();
+            }
+
         } else {
             personal_head_card_name.setText("未登录");
             personal_head_card_text_1.setText("偏好在登录后生成");
             personal_head_card_text_1.setPadding(12, 0, 12, 0);
             personal_like_card_text_2.setText("未同步");
-            personal_hate_card_text_2.setText("小程序");
+            personal_hate_card_text_2.setText("未同步");
+        }
+    }
+
+    @SuppressLint("MissingSuperCall")
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // TODO Auto-generated method stub
+        if (resultCode == RESULT_OK) {
+            if (requestCode == 1122){
+                String string = data.getStringExtra("backData");
+                MySnackbar.Custom(getView(),string,1000*3)
+                        .backgroundColor(0XFF333333)
+                        .radius(24)
+                        .margins(16,16,16,16)
+                        .show();
+            }
         }
     }
 }
