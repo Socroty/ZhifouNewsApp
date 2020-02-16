@@ -1,44 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout
-        android:id="@+id/news_particular_list_layout"
         xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-    <com.socroty.zhifounews.MyFontsTextView
+    <com.socroty.zhifounews.MySongTiFontsTextView
             android:id="@+id/news_particular_list_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
             android:textSize="20sp"
             android:textColor="@color/colorAccent"
-            android:paddingStart="30dp"
-            android:paddingEnd="30dp"
             android:gravity="center"
-            android:layout_gravity="center"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_gravity="center"/>
 
-    <com.socroty.zhifounews.MyAlignTextView
+    <com.socroty.zhifounews.MySongTiAlignTextView
             android:id="@+id/news_particular_list_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:lineSpacingExtra="4dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
             android:textSize="16sp"
-            android:background="#DADADA"
             android:textColor="@color/colorAccent"/>
-
-    <TextView
-            android:id="@+id/news_particular_list_mark"
-            android:gravity="center"
-            android:textColor="@color/colorAccent"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
 
     <com.socroty.zhifounews.MyRadiusImageView
             android:id="@+id/news_particular_list_image"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="4dp"
             android:textSize="12sp"
             android:scaleType="centerCrop"/>
+
+    <TextView
+            android:id="@+id/news_particular_list_mark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="12dp"
+            android:gravity="center"
+            android:textColor="@color/colorAccent"/>
 
 </FrameLayout>

@@ -1,7 +1,6 @@
 package com.socroty.zhifounews;
 
 import android.annotation.SuppressLint;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -14,12 +13,11 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.*;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -28,6 +26,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Objects;
 
+//新闻详情界面
 public class NewsParticularActivity extends AppCompatActivity {
 
     private View contentViewGroup;
@@ -39,12 +38,12 @@ public class NewsParticularActivity extends AppCompatActivity {
     private String user_id;
     private boolean user_permit;
     private String data_category;
-    private static String data_content;
-    private static String data_id;
+    private String data_id;
     private String data_url;
-    private static String data_comment;
     private String data_title;
     private String data_image_url;
+    private static String data_content;
+    private static String data_comment;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -71,26 +70,17 @@ public class NewsParticularActivity extends AppCompatActivity {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
-        String[] news_data;
-
-        final FrameLayout frameLayout = findViewById(R.id.news_particular_framelayout);
-
+        //接受Intent数据（从新闻列表适配器传输的新闻内容数据）
         final Intent intent = getIntent();
-        String data = intent.getStringExtra("extra_id");
+        String extra_data = intent.getStringExtra("extra_id");
 
+        //从文件中取出用户数据
         SharedPreferences pref = getSharedPreferences("user_info", MODE_PRIVATE);
         user_permit = pref.getBoolean("user_permit", false);
-        //user_name = pref.getString("user_name", "null");
         user_id = pref.getString("user_id", "null");
 
-
-        final SocketClient socketClient = new SocketClient();
-        final TextView news_particular_author_star_text = findViewById(R.id.news_particular_author_star_text);
-        final ImageView news_particular_author_star_image = findViewById(R.id.news_particular_author_star_image);
-        final TextView particular_like_text = findViewById(R.id.particular_like_text);
-
-        assert data != null;
-        news_data = data.split("/%/");
+        //解析新闻内容数据
+        String[] news_data = Objects.requireNonNull(extra_data).split("/%/");
         data_id = news_data[0];
         data_title = news_data[1];
         data_content = news_data[2];
@@ -102,12 +92,7 @@ public class NewsParticularActivity extends AppCompatActivity {
         data_follow = news_data[8];
         data_favorite = news_data[9];
 
-        try {
-            data_comment = socketClient.getDataInfo("data_comment_get/#/" + data_id);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
+        //解析并展示新闻时间
         @SuppressLint("SimpleDateFormat")
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date dateTime = null;
@@ -116,7 +101,6 @@ public class NewsParticularActivity extends AppCompatActivity {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-
         Calendar cal = Calendar.getInstance();
         assert dateTime != null;
         cal.setTime(dateTime);
@@ -125,7 +109,6 @@ public class NewsParticularActivity extends AppCompatActivity {
         int day = cal.get(Calendar.DAY_OF_MONTH);
         int hour = cal.get(Calendar.HOUR_OF_DAY);
         int minute = cal.get(Calendar.MINUTE);
-
         String month_result = String.valueOf(month);
         if (month < 10) {
             month_result = "0" + month;
@@ -142,19 +125,29 @@ public class NewsParticularActivity extends AppCompatActivity {
         if (minute < 10) {
             minute_result = "0" + minute;
         }
-
         TextView news_particular_time_test = findViewById(R.id.news_particular_time_test);
         news_particular_time_test.setText(" " + year + "年 " + month_result + "月" + day_result + "日 " + hour_result + "时" + minute_result + "分 ");
         CustomPaintDrawable customPaintDrawable = new CustomPaintDrawable();
         news_particular_time_test.setBackground(customPaintDrawable.paintDrawable(12, "#333333"));
 
+        //展示新闻标题
+        TextView textView_title = findViewById(R.id.news_particular_title);
+        textView_title.setText(data_title);
+        TextPaint tp = textView_title.getPaint();
+        tp.setFakeBoldText(true);
+
+        //新闻内容列表
         final RecyclerView recyclerView = findViewById(R.id.news_particular_context_list);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         ParticularContentListAdapter particularContentListAdapter = new ParticularContentListAdapter(this);
-        recyclerView.setLayoutManager(new MyPassLinearLayoutManager(this));
+        recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemViewCacheSize(20);
         recyclerView.setAdapter(particularContentListAdapter);
         recyclerView.setFocusable(false);
 
+        //展示新闻作者关注状态
+        final TextView news_particular_author_star_text = findViewById(R.id.news_particular_author_star_text);
+        final ImageView news_particular_author_star_image = findViewById(R.id.news_particular_author_star_image);
         if (data_follow.equals("exist")) {
             news_particular_author_star_text.setText("已关注   ");
             news_particular_author_star_image.setImageResource(R.drawable.news_author_star_ed);
@@ -165,6 +158,10 @@ public class NewsParticularActivity extends AppCompatActivity {
             followControl = 0;
         }
 
+        //展示新闻点赞状态
+        CardView cardView_news_particular_content_like_card = findViewById(R.id.news_particular_content_like_card);
+        CardView cardView_news_particular_content_read_card = findViewById(R.id.news_particular_content_read_card);
+        final TextView particular_like_text = findViewById(R.id.particular_like_text);
         if (data_favorite.equals("exist")) {
             particular_like_text.setText("已赞");
             favoriteControl = 1;
@@ -172,15 +169,6 @@ public class NewsParticularActivity extends AppCompatActivity {
             particular_like_text.setText("点赞");
             favoriteControl = 0;
         }
-
-        TextView textView_title = findViewById(R.id.news_particular_title);
-        textView_title.setText(data_title);
-        TextPaint tp = textView_title.getPaint();
-        tp.setFakeBoldText(true);
-
-        CardView cardView_news_particular_content_like_card = findViewById(R.id.news_particular_content_like_card);
-        CardView cardView_news_particular_content_read_card = findViewById(R.id.news_particular_content_read_card);
-
         cardView_news_particular_content_like_card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -193,6 +181,7 @@ public class NewsParticularActivity extends AppCompatActivity {
                         favoriteControl = 1;
                     }
                 } else {
+                    FrameLayout frameLayout = findViewById(R.id.news_particular_framelayout);
                     MySnackbar.Custom(frameLayout,"请登录后进行此操作!",1000*3)
                             .backgroundColor(0XFF333333)
                             .radius(24)
@@ -201,14 +190,6 @@ public class NewsParticularActivity extends AppCompatActivity {
                 }
             }
         });
-
-        final RecyclerView recyclerView_comment = findViewById(R.id.news_particular_comment_list);
-        final ParticularCommentListAdapter particularCommentListAdapter = new ParticularCommentListAdapter(this);
-        recyclerView_comment.setLayoutManager(new MyPassLinearLayoutManager(this));
-        recyclerView_comment.setItemViewCacheSize(20);
-        recyclerView_comment.setAdapter(particularCommentListAdapter);
-        recyclerView_comment.setFocusable(false);
-
         cardView_news_particular_content_read_card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -218,9 +199,9 @@ public class NewsParticularActivity extends AppCompatActivity {
             }
         });
 
+        //展示新闻作者信息
         TextView news_particular_author = findViewById(R.id.news_particular_author);
         news_particular_author.setText(data_author);
-
         ImageView news_particular_author_image = findViewById(R.id.news_particular_author_image);
         switch (data_author) {
             case "人民日报":
@@ -266,12 +247,9 @@ public class NewsParticularActivity extends AppCompatActivity {
                 news_particular_author_image.setImageResource(R.drawable.head_default);
                 break;
         }
-
         MyNetImageView news_particular_image = findViewById(R.id.news_particular_image_bg);
         news_particular_image.setImageURL(data_image_url);
-
         ImageView news_particular_author_background = findViewById(R.id.news_particular_author_background);
-
         switch (data_category) {
             case "时事":
                 news_particular_author_background.setImageResource(R.drawable.variety_domestic_bg);
@@ -307,7 +285,6 @@ public class NewsParticularActivity extends AppCompatActivity {
                 news_particular_author_background.setImageResource(R.drawable.variety_headline_bg);
                 break;
         }
-
         CardView cardView_author_star = findViewById(R.id.news_particular_author_star);
         cardView_author_star.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -324,6 +301,7 @@ public class NewsParticularActivity extends AppCompatActivity {
                         followControl = 1;
                     }
                 } else {
+                    final FrameLayout frameLayout = findViewById(R.id.news_particular_framelayout);
                     MySnackbar.Custom(frameLayout,"请登录后进行此操作!",1000*3)
                             .backgroundColor(0XFF333333)
                             .radius(24)
@@ -333,10 +311,18 @@ public class NewsParticularActivity extends AppCompatActivity {
             }
         });
 
+        //获取新闻评论
+        final SocketClient socketClient = new SocketClient();
+        try {
+            data_comment = socketClient.getDataInfo("data_comment_get/#/" + data_id);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         CardView particular_comment_ok = findViewById(R.id.particular_comment_ok);
         particular_comment_ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                final FrameLayout frameLayout = findViewById(R.id.news_particular_framelayout);
                 MySnackbar.Custom(frameLayout,"评论功能暂不可用！",1000*3)
                         .backgroundColor(0XFF333333)
                         .radius(24)
@@ -439,6 +425,7 @@ public class NewsParticularActivity extends AppCompatActivity {
         });
     }
 
+    //返回用户对新闻的“点赞”和“关注”信息修改
     @Override
     protected void onDestroy() {
         super.onDestroy();
@@ -460,7 +447,6 @@ public class NewsParticularActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
-
         if (data_favorite.equals("null") && favoriteControl == 1) {
             favorite_control = "data_favorite_insert";
             try {
@@ -478,10 +464,12 @@ public class NewsParticularActivity extends AppCompatActivity {
         }
     }
 
+    //新闻内容get方法
     String getDataContent() {
         return data_content;
     }
 
+    //新闻评论get方法
     String getDataComment() {
         return data_comment;
     }

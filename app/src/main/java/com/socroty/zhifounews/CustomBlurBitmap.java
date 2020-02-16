@@ -7,6 +7,7 @@ import android.renderscript.Element;
 import android.renderscript.RenderScript;
 import android.renderscript.ScriptIntrinsicBlur;
 
+//图片模糊类
 public class CustomBlurBitmap {
     Bitmap blurBitmap(Bitmap bmp, Context context) {
         Bitmap result = Bitmap.createBitmap(bmp.getWidth(), bmp.getHeight(), Bitmap.Config.ARGB_8888);

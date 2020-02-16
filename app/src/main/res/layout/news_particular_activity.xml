@@ -57,7 +57,7 @@
                             android:textSize="18sp"
                             android:layout_marginBottom="8dp"/>
 
-                    <com.socroty.zhifounews.MyAlignTextView
+                    <com.socroty.zhifounews.MySongTiAlignTextView
                             android:id="@+id/news_particular_title"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -92,7 +92,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content">
 
-                        <com.socroty.zhifounews.MyOpenRecycleView
+                        <androidx.recyclerview.widget.RecyclerView
                                 android:id="@+id/news_particular_context_list"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"

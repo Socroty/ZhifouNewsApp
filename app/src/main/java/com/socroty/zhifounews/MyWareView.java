@@ -12,6 +12,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
 
+//自定义波浪
 public class MyWareView extends View {
 
     private Paint mPaint;

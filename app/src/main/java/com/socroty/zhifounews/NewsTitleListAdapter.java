@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.text.TextPaint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,9 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
-
 import java.io.IOException;
-
 import static android.content.Context.MODE_PRIVATE;
 
 public class NewsTitleListAdapter extends RecyclerView.Adapter<NewsTitleListAdapter.ListViewHolder> {
@@ -34,7 +31,6 @@ public class NewsTitleListAdapter extends RecyclerView.Adapter<NewsTitleListAdap
 
     @Override
     public void onBindViewHolder(@NonNull ListViewHolder listViewHolder, final int i) {
-
         String[] data;
         final String[] data_title;
         final String[] data_id;
@@ -42,23 +38,16 @@ public class NewsTitleListAdapter extends RecyclerView.Adapter<NewsTitleListAdap
 
         CardView cardView = listViewHolder.view.findViewById(R.id.news_list_card);
         MyRadiusImageView imageView = listViewHolder.view.findViewById(R.id.news_list_card_image);
-
         TextView textView = listViewHolder.view.findViewById(R.id.news_list_title);
-        TextPaint tp = textView.getPaint();
-        tp.setFakeBoldText(true);
-
         SharedPreferences pref = context.getSharedPreferences("user_info", MODE_PRIVATE);
         //boolean user_permit = pref.getBoolean("user_permit", false);
         final String user_id = pref.getString("user_id", "null");
-
         NewsTitleListActivity newsTitleListActivity = new NewsTitleListActivity();
         String extra_data = newsTitleListActivity.getExtraData();
-
         data = extra_data.split("/@/");
         data_title = data[0].split("/%/");
         data_id = data[1].split("/%/");
         data_image_url = data[2].split("/%/");
-
         for (int j = 0; j < data_title.length - 1; j++) {
             if (i == j) {
                 if (data_image_url[j + 1].equals("null.image")) {
@@ -71,7 +60,6 @@ public class NewsTitleListAdapter extends RecyclerView.Adapter<NewsTitleListAdap
                 }
                 cardView.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View view) {
-
                         String data = null;
                         final SocketClient socketClient = new SocketClient();
                         try {
@@ -79,7 +67,6 @@ public class NewsTitleListAdapter extends RecyclerView.Adapter<NewsTitleListAdap
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
-
                         if (data != null) {
                             Intent intent = new Intent(context, NewsParticularActivity.class);
                             intent.putExtra("extra_id", data);

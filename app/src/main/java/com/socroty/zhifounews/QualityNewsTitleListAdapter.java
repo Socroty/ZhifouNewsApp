@@ -41,10 +41,7 @@ public class QualityNewsTitleListAdapter extends RecyclerView.Adapter<QualityNew
 
         CardView cardView = listViewHolder.view.findViewById(R.id.quality_news_list_card);
         MyRadiusImageView imageView = listViewHolder.view.findViewById(R.id.quality_news_list_card_image);
-
         TextView textView = listViewHolder.view.findViewById(R.id.quality_news_list_title);
-        TextPaint tp = textView.getPaint();
-        tp.setFakeBoldText(true);
 
         SharedPreferences pref = context.getSharedPreferences("user_info", MODE_PRIVATE);
         //boolean user_permit = pref.getBoolean("user_permit", false);

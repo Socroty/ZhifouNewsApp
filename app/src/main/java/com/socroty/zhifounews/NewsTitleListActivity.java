@@ -9,9 +9,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import java.io.IOException;
 
+//新闻标题列表界面
 public class NewsTitleListActivity extends AppCompatActivity {
 
     private static String title_data;

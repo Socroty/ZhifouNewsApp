@@ -20,7 +20,6 @@ import java.net.URL;
 public class MyRadiusImageView extends ImageView {
 
     private float width, height;
-
     private static final int GET_DATA_SUCCESS = 1;
     private static final int NETWORK_ERROR = 2;
     private static final int SERVER_ERROR = 3;

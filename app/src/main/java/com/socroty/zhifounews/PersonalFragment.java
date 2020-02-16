@@ -52,7 +52,7 @@ public class PersonalFragment extends Fragment {
             try {
                 user_name = pref.getString("user_name", "");
                 String user_random = pref.getString("user_random", "");
-                String data = "user_random_verify" + "/#/" + user_name + "/&/" + user_random;
+                String data = "device_random_verify" + "/#/" + user_name + "/&/" + user_random;
                 user_random_verify_result = socketClient.getDataInfo(data);
             } catch (IOException e) {
                 e.printStackTrace();

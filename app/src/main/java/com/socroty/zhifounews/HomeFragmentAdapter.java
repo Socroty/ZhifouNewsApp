@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
+//主界面标签页适配器
 public class HomeFragmentAdapter extends FragmentPagerAdapter {
 
     private String[] mTitles = new String[]{"Tab_1", "Tab_2", "Tab_3"};

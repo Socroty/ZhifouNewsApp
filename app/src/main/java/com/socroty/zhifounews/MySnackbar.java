@@ -11,9 +11,9 @@ import androidx.annotation.ColorInt;
 import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
 import com.google.android.material.snackbar.Snackbar;
-
 import java.lang.ref.WeakReference;
 
+//自定义Snackbar
 public class MySnackbar {
     //工具类当前持有的Snackbar实例
     private static WeakReference<Snackbar> snackbarWeakReference;

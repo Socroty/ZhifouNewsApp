@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.widget.RelativeLayout;
 
+//触摸阻拦布局
 public class MyShieldRelativeLayout extends RelativeLayout {
     private static final String TAG = "T";
     public MyShieldRelativeLayout(Context context, AttributeSet attrs) {

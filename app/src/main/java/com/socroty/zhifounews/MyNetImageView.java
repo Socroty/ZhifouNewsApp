@@ -14,6 +14,7 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+//网络图片ImageView
 @SuppressLint("AppCompatCustomView")
 public class MyNetImageView extends ImageView {
 
