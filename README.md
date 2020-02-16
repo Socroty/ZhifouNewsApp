@@ -1,5 +1,5 @@
 # ZhifouNews - Application
-#### English | [简体中文](https://github.com/Socroty/ZhifouNewsServer/blob/master/README_zh.md) | Espanol | 日本語
+#### English | [简体中文](https://github.com/Socroty/ZhifouNewsApp/blob/master/README_zh.md) | Espanol | 日本語
 ## ![Licence:GPL](https://img.shields.io/badge/Licence-GPL-red) ![IDE:IntelliJ IDEA](https://img.shields.io/badge/IDE-IntelliJ_IDEA-blueviolet) ![APP:AndroidJ IDEA](https://img.shields.io/badge/APP-Android-green)
 This project is a Android client-side program for ZhifouNews systems.   
 You can also modify the code to implement more functions and apply it to your own applications.
