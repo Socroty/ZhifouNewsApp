@@ -3,6 +3,24 @@
 ## ![Licence:GPL](https://img.shields.io/badge/Licence-GPL-red) ![IDE:IntelliJ IDEA](https://img.shields.io/badge/IDE-IntelliJ_IDEA-blueviolet) ![APP:AndroidJ IDEA](https://img.shields.io/badge/APP-Android-green)
 该项目是知否新闻系统的安卓客户端程序。  
 你也可以修改代码以实现更多功能，并将其应用于自己的应用程序。
+## 描述
+### 图片
+#### 头条推荐
+<img width="216" height="384" src="https://github.com/Socroty/ZhifouNewsApp/blob/master/app/image/ZhifouNews-Quality_Fragment_1.png"/><img width="216" height="384" src="https://github.com/Socroty/ZhifouNewsApp/blob/master/app/image/ZhifouNews-Quality_Fragment_2.png"/>
+#### 主题分类
+<img width="216" height="384" src="https://github.com/Socroty/ZhifouNewsApp/blob/master/app/image/ZhifouNews-Variety_Fragment_1.png"/><img width="216" height="384" src="https://github.com/Socroty/ZhifouNewsApp/blob/master/app/image/ZhifouNews-Variety_Fragment_2.png"/>
+#### 个人中心
+<img width="216" height="384" src="https://github.com/Socroty/ZhifouNewsApp/blob/master/app/image/ZhifouNews-Personal_Fragment_1.png"/><img width="216" height="384" src="https://github.com/Socroty/ZhifouNewsApp/blob/master/app/image/ZhifouNews-Personal_Fragment_2.png"/>
+#### 登录与注册
+<img width="216" height="384" src="https://github.com/Socroty/ZhifouNewsApp/blob/master/app/image/ZhifouNews-Sign_in.png"/><img width="216" height="384" src="https://github.com/Socroty/ZhifouNewsApp/blob/master/app/image/ZhifouNews-Sign_up.png"/>
+#### 关于信息
+<img width="216" height="384" src="https://github.com/Socroty/ZhifouNewsApp/blob/master/app/image/ZhifouNews-Info_Dialog.png"/>
+
+#### 新闻列表
+<img width="216" height="384" src="https://github.com/Socroty/ZhifouNewsApp/blob/master/app/image/ZhifouNews-News_List.png"/>
+
+#### 文章内容
+<img width="216" height="384" src="https://github.com/Socroty/ZhifouNewsApp/blob/master/app/image/ZhifouNews-Content_Particular_1.png"/><img width="216" height="384" src="https://github.com/Socroty/ZhifouNewsApp/blob/master/app/image/ZhifouNews-Content_Particular_2.png"/><img width="216" height="384" src="https://github.com/Socroty/ZhifouNewsApp/blob/master/app/image/ZhifouNews-Content_Particular_3.png"/><img width="216" height="384" src="https://github.com/Socroty/ZhifouNewsApp/blob/master/app/image/ZhifouNews-Content_Particular_4.png"/>
 ## 使用
 ### 代码
 1. 下载此项目的代码到你的计算机；
