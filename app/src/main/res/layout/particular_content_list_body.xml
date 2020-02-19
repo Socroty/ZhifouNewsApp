@@ -12,6 +12,7 @@
             android:layout_marginBottom="4dp"
             android:textSize="20sp"
             android:textColor="@color/colorAccent"
+            android:lineSpacingExtra="2dp"
             android:gravity="center"
             android:layout_gravity="center"/>
 
@@ -31,7 +32,8 @@
             android:layout_marginTop="12dp"
             android:layout_marginBottom="4dp"
             android:textSize="12sp"
-            android:scaleType="centerCrop"/>
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"/>
 
     <TextView
             android:id="@+id/news_particular_list_mark"
