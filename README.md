@@ -9,6 +9,16 @@ You can also modify the code to implement more functions and apply it to your ow
 <img width="216" height="384" src="https://github.com/Socroty/ZhifouNewsApp/blob/master/app/image/ZhifouNews-Quality_Fragment_1.png"/><img width="216" height="384" src="https://github.com/Socroty/ZhifouNewsApp/blob/master/app/image/ZhifouNews-Quality_Fragment_2.png"/>
 #### Variety Fragment
 <img width="216" height="384" src="https://github.com/Socroty/ZhifouNewsApp/blob/master/app/image/ZhifouNews-Variety_Fragment_1.png"/><img width="216" height="384" src="https://github.com/Socroty/ZhifouNewsApp/blob/master/app/image/ZhifouNews-Variety_Fragment_2.png"/>
+#### Personal Fragment
+<img width="216" height="384" src="https://github.com/Socroty/ZhifouNewsApp/blob/master/app/image/ZhifouNews-Personal_Fragment_1.png"/><img width="216" height="384" src="https://github.com/Socroty/ZhifouNewsApp/blob/master/app/image/ZhifouNews-Personal_Fragment_2.png"/>
+#### Users Singn_in and Sign_up
+<img width="216" height="384" src="https://github.com/Socroty/ZhifouNewsApp/blob/master/app/image/ZhifouNews-Sign_in.png"/><img width="216" height="384" src="https://github.com/Socroty/ZhifouNewsApp/blob/master/app/image/ZhifouNews-Sign_up.png"/>
+#### Info Dialog
+<img width="216" height="384" src="https://github.com/Socroty/ZhifouNewsApp/blob/master/app/image/ZhifouNews-Info_Dialog.png"/>
+
+#### News List
+<img width="216" height="384" src="https://github.com/Socroty/ZhifouNewsApp/blob/master/app/image/ZhifouNews-News_List.png"/>
+
 #### Content Particular
 <img width="216" height="384" src="https://github.com/Socroty/ZhifouNewsApp/blob/master/app/image/ZhifouNews-Content_Particular_1.png"/><img width="216" height="384" src="https://github.com/Socroty/ZhifouNewsApp/blob/master/app/image/ZhifouNews-Content_Particular_2.png"/><img width="216" height="384" src="https://github.com/Socroty/ZhifouNewsApp/blob/master/app/image/ZhifouNews-Content_Particular_3.png"/><img width="216" height="384" src="https://github.com/Socroty/ZhifouNewsApp/blob/master/app/image/ZhifouNews-Content_Particular_4.png"/>
 ## Usage
