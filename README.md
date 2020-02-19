@@ -5,7 +5,12 @@ This project is a Android client-side program for ZhifouNews systems.
 You can also modify the code to implement more functions and apply it to your own applications.
 ## Description
 ### Image
-![image](http://github.com/socroty/ZhifouNewsApp/raw/master/app/image/ZhifouNews-Content_Particular_2.png)
+#### Quality Fragment
+<img width="216" height="384" src="https://github.com/Socroty/ZhifouNewsApp/blob/master/app/image/ZhifouNews-Quality_Fragment_1.png"/><img width="216" height="384" src="https://github.com/Socroty/ZhifouNewsApp/blob/master/app/image/ZhifouNews-Quality_Fragment_2.png"/>
+#### Variety Fragment
+<img width="216" height="384" src="https://github.com/Socroty/ZhifouNewsApp/blob/master/app/image/ZhifouNews-Variety_Fragment_1.png"/><img width="216" height="384" src="https://github.com/Socroty/ZhifouNewsApp/blob/master/app/image/ZhifouNews-Variety_Fragment_2.png"/>
+#### Content Particular
+<img width="216" height="384" src="https://github.com/Socroty/ZhifouNewsApp/blob/master/app/image/ZhifouNews-Content_Particular_1.png"/><img width="216" height="384" src="https://github.com/Socroty/ZhifouNewsApp/blob/master/app/image/ZhifouNews-Content_Particular_2.png"/><img width="216" height="384" src="https://github.com/Socroty/ZhifouNewsApp/blob/master/app/image/ZhifouNews-Content_Particular_3.png"/><img width="216" height="384" src="https://github.com/Socroty/ZhifouNewsApp/blob/master/app/image/ZhifouNews-Content_Particular_4.png"/>
 ## Usage
 ### Code
 1. Download this code to your computer.
