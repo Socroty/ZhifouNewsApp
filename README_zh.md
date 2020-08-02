@@ -25,7 +25,7 @@
 ### 代码
 1. 下载此项目的代码到你的计算机；
 2. 将代码导入到Android集成开发环境或其它你喜欢的工具；
-3. 修改`src/main/java/com/socroty/zhifounews/SocketClient.java`文件为你自己的服务器配置；
+3. 修改`src/main/java/com/socroty/zhifounews/ClientConstant.java`文件为你自己的服务器配置；
 4. 也可以修改其它任何地方，以应用于你自己的应用程序；
 5. 运行。
 ## 开源协议

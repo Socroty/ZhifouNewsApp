@@ -25,7 +25,7 @@ You can also modify the code to implement more functions and apply it to your ow
 ### Code
 1. Download this code to your computer.
 2. Import the code into Android IDE or other tools you like.
-3. Modify the `src/main/java/com/socroty/zhifounews/SocketClient.java` according to your configuration.
+3. Modify the `src/main/java/com/socroty/zhifounews/ClientConstant.java` according to your configuration.
 4. Modify other places that need to be changed.
 5. Compile and run it.
 ## License
